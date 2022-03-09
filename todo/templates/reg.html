@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+     <style>
+         input[type="text"]{
+         border-radius: 20px;}
+         input[type="password"]{
+         border-radius: 20px;}
+     </style>
+</head>
+<body style="background-color: #52A9DB;">
+<form action="/reg/" method="post">{% csrf_token %}
+         <b>Login kiriting: </b><input type="text" required="required" name="login" placeholder="Login...."/>
+        <br>
+        <br>
+        <b>Parol kiriting: </b><input type="password" required="required" name="parol" placeholder="Parol...."/>
+        <br>
+        <ul>
+            <li>Sizning parolingiz boshqa shaxsiy ma'lumotlaringizga juda o'xshash bo'lmasin.</li>
+            <li>Parolingiz kamida 8 ta belgidan iborat bo'lishi kerak.</li>
+            <li>Sizning parolingiz oddiy parol bo'lishi mumkin emas.</li>
+            <li>Sizning parolingiz to'liq raqamli bo'lishi mumkin emas.</li>
+        </ul>
+        <br>
+        <b>Parolni tastiqlang: </b><input type="password" required="required" name="parol" placeholder="Parol..."/>
+        <br>
+        <br>
+        <button type="submit">Kirish</button>
+    </form>
+</body>
+</html>

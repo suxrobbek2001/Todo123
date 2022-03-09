@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+         input[type="text"]{
+         border-radius: 20px;}
+         input[type="password"]{
+         border-radius: 20px;}
+     </style>
+</head>
+<body style="background-color: #52A9DB;">
+    <form action="" method="post">{% csrf_token %}
+         <b>Login kiriting: </b><input type="text" name="login" placeholder="Login..."/>
+        <br>
+        <br>
+        <b>Parol kiritng: </b><input type="password" name="parol" placeholder="Parol..."/>
+        <br>
+        <br>
+        <button type="submit">Kirish</button>
+        <br>
+        <br>
+    </form>
+    <button><a style="text-decoration: none" href="/reg/">Registrasiya</a></button>
+</body>
+</html>

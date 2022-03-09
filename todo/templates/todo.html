@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--style-->
+  <style>
+  .card {
+
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5),
+               0 6px 20px 0 rgba(0,0,0,0.39);
+   background: DarkOrange;
+   margin-bottom : 5%;
+   border-radius: 25px;
+   padding : 2%;
+   overflow: auto;
+   resize: both;
+   text-overflow: ellipsis;
+  }
+  .card:hover{
+    background: lightblue;
+  }
+
+  .submit_form{
+
+    text-align: center;
+    padding: 3%;
+    background: DarkOrange;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),
+                0 6px 20px 0 rgba(0,0,0,0.36);
+  }
+  </style>
+
+</head>
+
+<body  class="container-fluid">
+
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-info">
+    <strong>{{message}}</strong>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <center class="row">
+    <h1><i>Kundalik ishlar</i></h1>
+    <hr />
+  </center>
+
+  <div class="row">
+
+    {% for i in todo %}
+    <div class="col-md-8">
+
+
+      <div class="card">
+        <center><b>{{i.nom}}</b></center>
+        <hr/>
+        {{i.vaqt}}
+        <hr/>
+        {{i.batafsil}}
+        <hr/>
+        {{i.status}}
+        <br/>
+        <br />
+        <form action="/" method="POST" style=" padding-right: 4%; padding-bottom: 3%;">{% csrf_token %}
+          <button  value="remove" type="submit"  class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span> <a style="text-decoration: none" href="/del/{{i.id}}">&nbsp;Remove</a></button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="col-md-1"> </div>
+    <div class="col-md-3" >
+      <div  class="submit_form">
+      <form class="form" action="{% url 'submit' %}"  method="POST">{% csrf_token %}
+        <input name="n" type="text" placeholder="Nomini kiriting">
+        <input name="b" type="text" placeholder="Batafsil ...">
+        <input name="s" type="text" placeholder="Statusini kiriting...">
+        <input name="v" type="time" placeholder="Vaqtni kiriting...">
+        <br>
+        <br>
+        <center>
+          <button type="submit" class="btn btn-default">Topshirish</button>
+        </center>
+        <br>
+        <br>
+        <button><a style="text-decoration: none" href="/logout/">Chiqish</a></button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
